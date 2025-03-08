@@ -7,6 +7,12 @@ kotlin {
     jvmToolchain(libs.versions.jdkVersion.get().toInt())
 
     androidTarget()
+
+    sourceSets {
+        commonMain.dependencies {
+            implementation(libs.koin.core)
+        }
+    }
 }
 
 android {
