@@ -5,5 +5,5 @@ import dev.niek.flickrsearch.domain.repositories.GreetingRepository
 import org.koin.dsl.module
 
 val dataModule = module {
-    single<GreetingRepository> { DefaultGreetingRepository() }
+    single<GreetingRepository> { DefaultGreetingRepository(get()) }
 }

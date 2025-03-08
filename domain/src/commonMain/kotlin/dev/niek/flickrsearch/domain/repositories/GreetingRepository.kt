@@ -4,5 +4,5 @@ import dev.niek.flickrsearch.domain.models.Greeting
 
 interface GreetingRepository {
 
-    fun getGreeting(): Greeting
+    suspend fun getGreeting(greetingId: Int): Result<Greeting>
 }

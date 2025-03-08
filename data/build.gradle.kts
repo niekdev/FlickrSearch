@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
     alias(libs.plugins.android.library)
+    alias(libs.plugins.sqlDelight)
 }
 
 kotlin {
@@ -13,6 +14,20 @@ kotlin {
             implementation(projects.domain)
 
             implementation(libs.koin.core)
+            implementation(libs.sqlDelight.primitiveAdapters)
+        }
+
+        androidMain.dependencies {
+            implementation(libs.koin.android)
+            implementation(libs.sqlDelight.androidDriver)
+        }
+    }
+}
+
+sqldelight {
+    databases {
+        create("FlickrSearchDatabase") {
+            packageName.set("dev.niek.flickrsearch.data.database")
         }
     }
 }

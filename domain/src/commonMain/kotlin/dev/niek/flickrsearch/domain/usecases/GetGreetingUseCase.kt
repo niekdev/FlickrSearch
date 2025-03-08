@@ -5,5 +5,5 @@ import dev.niek.flickrsearch.domain.repositories.GreetingRepository
 
 class GetGreetingUseCase(private val greetingRepo: GreetingRepository) {
 
-    operator fun invoke(): Greeting = greetingRepo.getGreeting()
+    suspend operator fun invoke(): Result<Greeting> = greetingRepo.getGreeting(0)
 }
