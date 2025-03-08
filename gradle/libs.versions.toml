@@ -1,0 +1,23 @@
+[versions]
+kotlin = "2.1.0"
+agp = "8.7.2" # AGP 8.7.2 is the max supported version for KMP 2.1.0
+compose-plugin = "1.7.0"
+
+android-compileSdk = "35"
+android-targetSdk = "35"
+android-minSdk = "21"
+jdkVersion = "17"
+
+androidx-activity = "1.10.1"
+androidx-appcompat = "1.7.0"
+
+[libraries]
+androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "androidx-activity" }
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "androidx-appcompat" }
+
+[plugins]
+kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+compose-plugin = { id = "org.jetbrains.compose", version.ref = "compose-plugin" }
+compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+android-application = { id = "com.android.application", version.ref = "agp" }
+android-library = { id = "com.android.library", version.ref = "agp" }
