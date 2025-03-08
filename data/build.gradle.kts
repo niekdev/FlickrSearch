@@ -1,7 +1,5 @@
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
-    alias(libs.plugins.compose.compiler)
-    alias(libs.plugins.compose.plugin)
     alias(libs.plugins.android.library)
 }
 
@@ -13,16 +11,12 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             implementation(projects.domain)
-
-            implementation(compose.runtime)
-            implementation(compose.foundation)
-            implementation(compose.material3)
         }
     }
 }
 
 android {
-    namespace = "dev.niek.flickrsearch.presentation"
+    namespace = "dev.niek.flickrsearch.data"
 
     compileSdk = libs.versions.android.compileSdk.get().toInt()
     defaultConfig {

@@ -13,6 +13,8 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             implementation(projects.presentation)
+            implementation(projects.domain)
+            implementation(projects.data)
         }
 
         androidMain.dependencies {
