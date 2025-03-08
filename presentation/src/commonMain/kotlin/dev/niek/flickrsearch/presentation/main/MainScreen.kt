@@ -1,4 +1,4 @@
-package dev.niek.flickrsearch.presentation
+package dev.niek.flickrsearch.presentation.main
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize

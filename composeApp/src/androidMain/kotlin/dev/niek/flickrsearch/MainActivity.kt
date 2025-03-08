@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
 import dev.niek.flickrsearch.domain.usecases.GetGreetingUseCase
-import dev.niek.flickrsearch.presentation.MainScreen
+import dev.niek.flickrsearch.presentation.main.MainScreen
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
