@@ -8,4 +8,6 @@ interface SearchHistoryDao {
     suspend fun selectFullSearchHistory(): Flow<List<SearchEntry>>
 
     suspend fun insertSearchEntry(searchQuery: String)
+
+    suspend fun clearSearchHistory()
 }

@@ -16,4 +16,8 @@ class DefaultSearchHistoryRepository(
     override suspend fun insertSearchEntry(searchQuery: String) {
         searchHistoryDao.insertSearchEntry(searchQuery)
     }
+
+    override suspend fun clearSearchHistory() {
+        searchHistoryDao.clearSearchHistory()
+    }
 }

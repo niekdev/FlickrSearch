@@ -29,4 +29,8 @@ class SqlDelightSearchHistoryDao(
     override suspend fun insertSearchEntry(searchQuery: String) {
         queries.insertSearchEntry(searchQuery)
     }
+
+    override suspend fun clearSearchHistory() {
+        queries.clearSearchHistory()
+    }
 }

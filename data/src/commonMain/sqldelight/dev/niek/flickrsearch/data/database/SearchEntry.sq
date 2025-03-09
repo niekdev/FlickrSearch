@@ -16,6 +16,9 @@ insertSearchEntry:
 INSERT OR REPLACE INTO search_entry(query)
 VALUES (?);
 
+clearSearchHistory:
+DELETE FROM search_entry;
+
 INSERT INTO search_entry(query)
 VALUES
   ('Monkey'),
