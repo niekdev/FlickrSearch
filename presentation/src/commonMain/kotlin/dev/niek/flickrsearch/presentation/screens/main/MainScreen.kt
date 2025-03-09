@@ -19,6 +19,7 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import dev.niek.flickrsearch.presentation.navigation.FlickrSearchRoute
@@ -35,6 +36,8 @@ fun MainScreen(
     modifier: Modifier = Modifier,
     vm: MainViewModel = koinViewModel(),
 ) {
+    val state by vm.state.collectAsStateWithLifecycle()
+
     val startDestinationRoute: String = remember {
         requireNotNull(navController.graph.findStartDestination().route)
     }
@@ -53,6 +56,7 @@ fun MainScreen(
 
                     IconButton(
                         onClick = { vm.clearSearchHistory() },
+                        enabled = state.hasSearchHistory,
                     ) {
                         Icon(
                             imageVector = Icons.Default.Delete,

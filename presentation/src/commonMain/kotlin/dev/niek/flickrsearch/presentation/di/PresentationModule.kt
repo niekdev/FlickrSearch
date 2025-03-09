@@ -7,7 +7,7 @@ import org.koin.core.module.dsl.viewModel
 import org.koin.dsl.module
 
 val presentationModule = module {
-    viewModel { MainViewModel(get()) }
+    viewModel { MainViewModel(get(), get()) }
     viewModel { HistoryViewModel(get()) }
     viewModel { SearchViewModel(get()) }
 }
