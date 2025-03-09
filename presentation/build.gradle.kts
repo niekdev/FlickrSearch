@@ -1,5 +1,6 @@
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
+    alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.compose.plugin)
     alias(libs.plugins.android.library)
@@ -19,6 +20,7 @@ kotlin {
             implementation(compose.material3)
             implementation(compose.materialIconsExtended)
 
+            implementation(libs.kotlinx.serialization)
             implementation(libs.androidx.lifecycle.viewmodel)
             implementation(libs.navigation.compose)
             implementation(libs.koin.compose.viewmodel)

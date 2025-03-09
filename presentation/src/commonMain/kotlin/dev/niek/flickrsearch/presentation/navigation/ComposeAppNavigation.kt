@@ -12,13 +12,13 @@ fun ComposeAppNavigation() {
 
     NavHost(
         navController = navController,
-        startDestination = Routes.SEARCH,
+        startDestination = FlickrSearchRoute.Search,
     ) {
-        composable(Routes.SEARCH) {
-            MainScreen(navController, Routes.SEARCH)
+        composable<FlickrSearchRoute.Search> {
+            MainScreen(navController, FlickrSearchRoute.Search)
         }
-        composable(Routes.HISTORY) {
-            MainScreen(navController, Routes.HISTORY)
+        composable<FlickrSearchRoute.History> {
+            MainScreen(navController, FlickrSearchRoute.History)
         }
     }
 }

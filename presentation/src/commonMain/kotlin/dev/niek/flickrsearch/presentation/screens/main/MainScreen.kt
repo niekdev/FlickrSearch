@@ -12,7 +12,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
 import androidx.navigation.NavGraph.Companion.findStartDestination
-import dev.niek.flickrsearch.presentation.navigation.Routes
+import dev.niek.flickrsearch.presentation.navigation.FlickrSearchRoute
 import dev.niek.flickrsearch.presentation.navigation.bottomNavigationItems
 import dev.niek.flickrsearch.presentation.screens.history.HistoryScreen
 import dev.niek.flickrsearch.presentation.screens.search.SearchScreen
@@ -20,7 +20,7 @@ import dev.niek.flickrsearch.presentation.screens.search.SearchScreen
 @Composable
 fun MainScreen(
     navController: NavController,
-    currentRoute: String,
+    currentRoute: FlickrSearchRoute,
     modifier: Modifier = Modifier,
 ) {
     val startDestinationRoute: String = remember {
@@ -51,8 +51,8 @@ fun MainScreen(
     ) { innerPadding ->
         Box(modifier = modifier.padding(innerPadding)) {
             when (currentRoute) {
-                Routes.SEARCH -> SearchScreen(navController)
-                Routes.HISTORY -> HistoryScreen(navController)
+                FlickrSearchRoute.Search -> SearchScreen(navController)
+                FlickrSearchRoute.History -> HistoryScreen(navController)
             }
         }
     }

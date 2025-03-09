@@ -14,6 +14,8 @@ androidx-lifecycle = "2.8.7"
 
 compose-navigation = "2.8.0-alpha10" # Compose navigation for KMP is still in alpha... exciting!
 
+kotlinx-serialization = "1.8.0"
+
 koin = "4.0.2"
 sqlDelight = "2.0.2"
 
@@ -23,6 +25,9 @@ androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version
 androidx-lifecycle-viewmodel = { group = "androidx.lifecycle", name = "lifecycle-viewmodel", version.ref = "androidx-lifecycle" }
 
 navigation-compose = { group = "org.jetbrains.androidx.navigation", name = "navigation-compose", version.ref = "compose-navigation" }
+
+# KotlinX
+kotlinx-serialization = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-core", version.ref = "kotlinx-serialization" }
 
 # Koin
 koin-core = { group = "io.insert-koin", name = "koin-core", version.ref = "koin" }
@@ -36,6 +41,7 @@ sqlDelight-primitiveAdapters = { group = "app.cash.sqldelight", name = "primitiv
 
 [plugins]
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 compose-plugin = { id = "org.jetbrains.compose", version.ref = "compose-plugin" }
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 android-application = { id = "com.android.application", version.ref = "agp" }
