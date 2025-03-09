@@ -44,7 +44,6 @@ fun SearchScreen(
 
     Surface(
         modifier = modifier.fillMaxSize(),
-        color = MaterialTheme.colorScheme.background,
     ) {
         Box(
             modifier = Modifier.fillMaxSize(),
