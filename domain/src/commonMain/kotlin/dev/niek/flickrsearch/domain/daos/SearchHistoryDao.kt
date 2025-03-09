@@ -10,4 +10,6 @@ interface SearchHistoryDao {
     suspend fun insertSearchEntry(searchQuery: String)
 
     suspend fun clearSearchHistory()
+
+    suspend fun hasSearchHistory(): Flow<Boolean>
 }

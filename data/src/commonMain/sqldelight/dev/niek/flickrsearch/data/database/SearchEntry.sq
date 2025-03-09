@@ -19,6 +19,9 @@ VALUES (?);
 clearSearchHistory:
 DELETE FROM search_entry;
 
+hasSearchHistory:
+SELECT EXISTS(SELECT 1 FROM search_entry LIMIT 1);
+
 INSERT INTO search_entry(query)
 VALUES
   ('Monkey'),

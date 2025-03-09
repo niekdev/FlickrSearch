@@ -2,6 +2,7 @@ package dev.niek.flickrsearch.data.database.dao
 
 import app.cash.sqldelight.coroutines.asFlow
 import app.cash.sqldelight.coroutines.mapToList
+import app.cash.sqldelight.coroutines.mapToOne
 import dev.niek.flickrsearch.data.database.FlickrSearchDatabase
 import dev.niek.flickrsearch.data.database.mappers.SearchEntryEntityListToDomainListMapper
 import dev.niek.flickrsearch.domain.daos.SearchHistoryDao
@@ -33,4 +34,9 @@ class SqlDelightSearchHistoryDao(
     override suspend fun clearSearchHistory() {
         queries.clearSearchHistory()
     }
+
+    override suspend fun hasSearchHistory(): Flow<Boolean> =
+        queries.hasSearchHistory()
+            .asFlow()
+            .mapToOne(dispatcher)
 }

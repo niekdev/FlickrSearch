@@ -20,4 +20,8 @@ class DefaultSearchHistoryRepository(
     override suspend fun clearSearchHistory() {
         searchHistoryDao.clearSearchHistory()
     }
+
+    override suspend fun hasSearchHistory(): Flow<Boolean> {
+        return searchHistoryDao.hasSearchHistory()
+    }
 }
