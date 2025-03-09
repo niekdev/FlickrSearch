@@ -1,7 +1,9 @@
 package dev.niek.flickrsearch.presentation.di
 
+import dev.niek.flickrsearch.presentation.screens.history.HistoryViewModel
+import org.koin.core.module.dsl.viewModel
 import org.koin.dsl.module
 
 val presentationModule = module {
-    // TODO: Add actual useful ViewModels in here
+    viewModel { HistoryViewModel(get()) }
 }
