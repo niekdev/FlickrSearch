@@ -13,8 +13,10 @@ kotlin {
         commonMain.dependencies {
             implementation(projects.domain)
 
+            implementation(libs.kotlinx.coroutines)
             implementation(libs.koin.core)
             implementation(libs.sqlDelight.primitiveAdapters)
+            implementation(libs.sqlDelight.coroutines)
         }
 
         androidMain.dependencies {
