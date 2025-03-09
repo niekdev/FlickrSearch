@@ -15,6 +15,7 @@ kotlin {
             implementation(projects.presentation)
             implementation(projects.domain)
             implementation(projects.data)
+            implementation(libs.napier)
         }
 
         androidMain.dependencies {

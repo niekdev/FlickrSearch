@@ -19,6 +19,7 @@ kotlinx-serialization = "1.8.0"
 
 koin = "4.0.2"
 sqlDelight = "2.0.2"
+napier = "2.7.1"
 
 [libraries]
 androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "androidx-activity" }
@@ -40,6 +41,9 @@ koin-compose-viewmodel = { group = "io.insert-koin", name = "koin-compose-viewmo
 sqlDelight-androidDriver = { group = "app.cash.sqldelight", name = "android-driver", version.ref = "sqlDelight" }
 sqlDelight-coroutines = { group = "app.cash.sqldelight", name = "coroutines-extensions", version.ref = "sqlDelight" }
 sqlDelight-primitiveAdapters = { group = "app.cash.sqldelight", name = "primitive-adapters", version.ref = "sqlDelight" }
+
+# Other
+napier = { group = "io.github.aakira", name = "napier", version.ref = "napier" }
 
 [plugins]
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
