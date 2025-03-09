@@ -29,7 +29,7 @@ kotlin {
 sqldelight {
     databases {
         create("FlickrSearchDatabase") {
-            packageName.set("dev.niek.flickrsearch.data.database")
+            packageName.set("dev.niek.flickrsearch.data.datasources.database")
         }
     }
 }

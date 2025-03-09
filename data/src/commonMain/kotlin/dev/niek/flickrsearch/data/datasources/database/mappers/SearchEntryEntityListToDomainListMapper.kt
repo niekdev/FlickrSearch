@@ -1,6 +1,6 @@
-package dev.niek.flickrsearch.data.database.mappers
+package dev.niek.flickrsearch.data.datasources.database.mappers
 
-import dev.niek.flickrsearch.data.database.Search_entry as SearchEntryEntity
+import dev.niek.flickrsearch.data.datasources.database.Search_entry as SearchEntryEntity
 import dev.niek.flickrsearch.domain.models.SearchEntry as SearchEntryDomain
 
 class SearchEntryEntityListToDomainListMapper :

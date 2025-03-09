@@ -1,4 +1,4 @@
-package dev.niek.flickrsearch.data.database
+package dev.niek.flickrsearch.data.datasources.database
 
 import app.cash.sqldelight.adapter.primitive.IntColumnAdapter
 import app.cash.sqldelight.db.SqlDriver

@@ -1,4 +1,4 @@
-package dev.niek.flickrsearch.data.database
+package dev.niek.flickrsearch.data.datasources.database
 
 import app.cash.sqldelight.db.SqlDriver
 import app.cash.sqldelight.driver.android.AndroidSqliteDriver

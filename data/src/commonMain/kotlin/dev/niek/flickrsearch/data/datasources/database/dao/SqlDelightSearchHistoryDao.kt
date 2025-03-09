@@ -1,11 +1,11 @@
-package dev.niek.flickrsearch.data.database.dao
+package dev.niek.flickrsearch.data.datasources.database.dao
 
 import app.cash.sqldelight.coroutines.asFlow
 import app.cash.sqldelight.coroutines.mapToList
 import app.cash.sqldelight.coroutines.mapToOne
-import dev.niek.flickrsearch.data.database.FlickrSearchDatabase
-import dev.niek.flickrsearch.data.database.mappers.SearchEntryEntityListToDomainListMapper
-import dev.niek.flickrsearch.domain.daos.SearchHistoryDao
+import dev.niek.flickrsearch.data.datasources.database.FlickrSearchDatabase
+import dev.niek.flickrsearch.data.datasources.database.mappers.SearchEntryEntityListToDomainListMapper
+import dev.niek.flickrsearch.domain.datasources.database.daos.SearchHistoryDao
 import dev.niek.flickrsearch.domain.models.SearchEntry
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers

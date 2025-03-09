@@ -1,4 +1,4 @@
-package dev.niek.flickrsearch.domain.daos
+package dev.niek.flickrsearch.domain.datasources.database.daos
 
 import dev.niek.flickrsearch.domain.models.SearchEntry
 import kotlinx.coroutines.flow.Flow

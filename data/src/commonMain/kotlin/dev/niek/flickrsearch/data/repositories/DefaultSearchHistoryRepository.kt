@@ -1,6 +1,6 @@
 package dev.niek.flickrsearch.data.repositories
 
-import dev.niek.flickrsearch.domain.daos.SearchHistoryDao
+import dev.niek.flickrsearch.domain.datasources.database.daos.SearchHistoryDao
 import dev.niek.flickrsearch.domain.models.SearchEntry
 import dev.niek.flickrsearch.domain.repositories.SearchHistoryRepository
 import kotlinx.coroutines.flow.Flow
