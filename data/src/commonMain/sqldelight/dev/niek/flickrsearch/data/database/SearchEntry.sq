@@ -2,7 +2,9 @@ import kotlin.Int;
 
 CREATE TABLE IF NOT EXISTS search_entry (
   id INTEGER AS Int NOT NULL PRIMARY KEY AUTOINCREMENT,
-  query TEXT NOT NULL
+  query TEXT NOT NULL,
+
+  UNIQUE (query) ON CONFLICT REPLACE
 );
 
 selectFullSearchHistory:
