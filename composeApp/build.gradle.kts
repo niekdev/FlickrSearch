@@ -29,10 +29,16 @@ kotlin {
 android {
     namespace = "dev.niek.flickrsearch.composeapp"
 
+    buildFeatures {
+        buildConfig = true
+    }
+
     compileSdk = libs.versions.android.compileSdk.get().toInt()
     defaultConfig {
         applicationId = "dev.niek.flickrsearch"
         targetSdk = libs.versions.android.targetSdk.get().toInt()
         minSdk = libs.versions.android.minSdk.get().toInt()
+
+        buildConfigField("boolean", "ENABLE_REMOTE_LOGGING", "true")
     }
 }
