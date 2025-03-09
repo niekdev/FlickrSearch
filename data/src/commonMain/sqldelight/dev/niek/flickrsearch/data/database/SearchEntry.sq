@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS search_entry (
 selectFullSearchHistory:
 SELECT *
 FROM search_entry
-ORDER BY id ASC;
+ORDER BY id DESC;
 
 INSERT INTO search_entry(query)
 VALUES
