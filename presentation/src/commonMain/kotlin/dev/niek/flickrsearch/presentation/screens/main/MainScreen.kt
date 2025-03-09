@@ -4,8 +4,11 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBarsPadding
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
@@ -43,6 +46,18 @@ fun MainScreen(
                 modifier = Modifier
                     .background(color = MaterialTheme.colorScheme.surfaceContainer)
                     .statusBarsPadding(),
+                actions = {
+                    if (currentRoute != FlickrSearchRoute.History) return@TopAppBar
+
+                    IconButton(
+                        onClick = { /* no-op */ },
+                    ) {
+                        Icon(
+                            imageVector = Icons.Default.Delete,
+                            contentDescription = "Clear search history",
+                        )
+                    }
+                },
                 colors = TopAppBarDefaults.topAppBarColors().copy(
                     containerColor = MaterialTheme.colorScheme.surfaceContainer,
                 ),
