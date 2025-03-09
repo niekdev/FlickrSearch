@@ -12,4 +12,8 @@ class DefaultSearchHistoryRepository(
     override suspend fun getSearchHistory(): Flow<List<SearchEntry>> {
         return searchHistoryDao.selectFullSearchHistory()
     }
+
+    override suspend fun insertSearchEntry(searchQuery: String) {
+        searchHistoryDao.insertSearchEntry(searchQuery)
+    }
 }

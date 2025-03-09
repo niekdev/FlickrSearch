@@ -12,6 +12,10 @@ SELECT *
 FROM search_entry
 ORDER BY id DESC;
 
+insertSearchEntry:
+INSERT OR REPLACE INTO search_entry(query)
+VALUES (?);
+
 INSERT INTO search_entry(query)
 VALUES
   ('Monkey'),

@@ -6,4 +6,6 @@ import kotlinx.coroutines.flow.Flow
 interface SearchHistoryRepository {
 
     suspend fun getSearchHistory(): Flow<List<SearchEntry>>
+
+    suspend fun insertSearchEntry(searchQuery: String)
 }

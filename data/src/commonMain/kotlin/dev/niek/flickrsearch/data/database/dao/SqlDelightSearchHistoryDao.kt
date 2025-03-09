@@ -25,4 +25,8 @@ class SqlDelightSearchHistoryDao(
             .asFlow()
             .mapToList(dispatcher)
             .map(searchEntryEntityListToDomainListMapper)
+
+    override suspend fun insertSearchEntry(searchQuery: String) {
+        queries.insertSearchEntry(searchQuery)
+    }
 }
