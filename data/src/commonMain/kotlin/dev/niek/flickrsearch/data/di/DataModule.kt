@@ -8,5 +8,5 @@ import org.koin.dsl.module
 
 val dataModule = module {
     single<SearchHistoryRepository> { DefaultSearchHistoryRepository(get()) }
-    single<FlickrRepository> { DefaultFlickrRepository(get()) }
+    single<FlickrRepository> { DefaultFlickrRepository(get(), get()) }
 }
