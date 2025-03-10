@@ -54,13 +54,13 @@ android {
 }
 
 buildkonfig {
-    val localPropertiesFile = rootProject.file("local.properties")
-    val localProperties = Properties()
-    if (localPropertiesFile.exists()) {
-        localProperties.load(FileInputStream(localPropertiesFile))
+    val keysPropertiesFile = rootProject.file("keys.properties")
+    val keysProperties = Properties()
+    if (keysPropertiesFile.exists()) {
+        keysProperties.load(FileInputStream(keysPropertiesFile))
     }
 
-    val flickrApiKey: String = localProperties.getProperty("FLICKR_API_KEY", "")
+    val flickrApiKey: String = keysProperties.getProperty("FLICKR_API_KEY", "")
 
     packageName = "dev.niek.flickrsearch"
     defaultConfigs {
