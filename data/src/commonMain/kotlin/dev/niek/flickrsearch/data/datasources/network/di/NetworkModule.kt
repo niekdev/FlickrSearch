@@ -6,10 +6,10 @@ import dev.niek.flickrsearch.domain.datasources.network.services.FlickrService
 import org.koin.core.module.Module
 import org.koin.dsl.module
 
-val networkModule: (enableLogging: Boolean) -> Module
-    get() = { enableLogging ->
+val networkModule: (enableLogging: Boolean, flickrApiKey: String) -> Module
+    get() = { enableLogging, flickrApiKey ->
         module {
             single { createHttpClient(enableLogging) }
-            single<FlickrService> { KtorFlickrService(get()) }
+            single<FlickrService> { KtorFlickrService(get(), flickrApiKey) }
         }
     }

@@ -9,11 +9,12 @@ import io.ktor.client.plugins.resources.get
 
 class KtorFlickrService(
     private val httpClient: HttpClient,
+    private val flickrApiKey: String,
 ) : FlickrService {
 
     override suspend fun searchPhotos(searchTerm: String): SearchPhotosResponse = handleErrors {
         val request = SearchPhotos(
-            apiKey = "", // TODO: Provide API key without committing it to the project's repo
+            apiKey = flickrApiKey,
             searchTerm = searchTerm,
         )
         httpClient.get(request)

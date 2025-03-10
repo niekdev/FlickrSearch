@@ -21,6 +21,7 @@ koin = "4.0.2"
 sqlDelight = "2.0.2"
 ktor = "3.1.1"
 napier = "2.7.1"
+buildKonfig = "0.17.0"
 
 [libraries]
 androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "androidx-activity" }
@@ -53,6 +54,7 @@ ktorClientLogging = { module = "io.ktor:ktor-client-logging", version.ref = "kto
 
 # Other
 napier = { group = "io.github.aakira", name = "napier", version.ref = "napier" }
+buildKonfig = { group = "com.codingfeline.buildkonfig", name = "buildkonfig-gradle-plugin", version.ref = "buildKonfig" }
 
 [plugins]
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
@@ -62,3 +64,4 @@ compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "
 android-application = { id = "com.android.application", version.ref = "agp" }
 android-library = { id = "com.android.library", version.ref = "agp" }
 sqlDelight = { id = "app.cash.sqldelight", version.ref = "sqlDelight" }
+buildKonfig = { id = "com.codingfeline.buildkonfig", version.ref = "buildKonfig" }
