@@ -4,14 +4,15 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.History
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.ui.graphics.vector.ImageVector
+import dev.niek.flickrsearch.presentation.navigation.AppRoute.MainScreenRoute
 
 data class BottomNavigationItem(
-    val route: FlickrSearchRoute,
+    val route: MainScreenRoute,
     val label: String,
     val icon: ImageVector,
 )
 
 val bottomNavigationItems = listOf(
-    BottomNavigationItem(FlickrSearchRoute.Search, "Search", Icons.Filled.Search),
-    BottomNavigationItem(FlickrSearchRoute.History, "History", Icons.Filled.History),
+    BottomNavigationItem(MainScreenRoute.Search, "Search", Icons.Filled.Search),
+    BottomNavigationItem(MainScreenRoute.History, "History", Icons.Filled.History),
 )

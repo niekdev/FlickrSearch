@@ -4,7 +4,9 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.toRoute
 import dev.niek.flickrsearch.presentation.screens.main.MainScreen
+import dev.niek.flickrsearch.presentation.screens.results.ResultsScreen
 import org.koin.compose.KoinContext
 
 @Composable
@@ -14,13 +16,17 @@ fun ComposeAppNavigation() {
     KoinContext {
         NavHost(
             navController = navController,
-            startDestination = FlickrSearchRoute.Search,
+            startDestination = AppRoute.MainScreenRoute.Search,
         ) {
-            composable<FlickrSearchRoute.Search> {
-                MainScreen(navController, FlickrSearchRoute.Search)
+            composable<AppRoute.MainScreenRoute.Search> {
+                MainScreen(navController, AppRoute.MainScreenRoute.Search)
             }
-            composable<FlickrSearchRoute.History> {
-                MainScreen(navController, FlickrSearchRoute.History)
+            composable<AppRoute.MainScreenRoute.History> {
+                MainScreen(navController, AppRoute.MainScreenRoute.History)
+            }
+            composable<AppRoute.Results> { backStackEntry ->
+                val results: AppRoute.Results = backStackEntry.toRoute()
+                ResultsScreen(navController, searchTerm = results.searchTerm)
             }
         }
     }

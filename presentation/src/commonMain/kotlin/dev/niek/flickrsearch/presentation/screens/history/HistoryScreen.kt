@@ -14,6 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
+import dev.niek.flickrsearch.presentation.navigation.AppRoute
 import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
@@ -33,7 +34,9 @@ fun HistoryScreen(
             items = state.searchHistory,
             itemContent = { item ->
                 Button(
-                    onClick = { /* no-op */ },
+                    onClick = {
+                        navController.navigate(AppRoute.Results(searchTerm = item))
+                    },
                     modifier = Modifier
                         .fillMaxWidth(),
                 ) {

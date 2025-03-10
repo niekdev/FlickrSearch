@@ -27,7 +27,7 @@ import androidx.compose.ui.Modifier
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
 import androidx.navigation.NavGraph.Companion.findStartDestination
-import dev.niek.flickrsearch.presentation.navigation.FlickrSearchRoute
+import dev.niek.flickrsearch.presentation.navigation.AppRoute.MainScreenRoute
 import dev.niek.flickrsearch.presentation.navigation.bottomNavigationItems
 import dev.niek.flickrsearch.presentation.screens.history.HistoryScreen
 import dev.niek.flickrsearch.presentation.screens.search.SearchScreen
@@ -37,7 +37,7 @@ import org.koin.compose.viewmodel.koinViewModel
 @Composable
 fun MainScreen(
     navController: NavController,
-    currentRoute: FlickrSearchRoute,
+    currentRoute: MainScreenRoute,
     modifier: Modifier = Modifier,
     vm: MainViewModel = koinViewModel(),
 ) {
@@ -55,11 +55,11 @@ fun MainScreen(
                 title = {
                     Text(currentRoute.title)
                 },
-                modifier = Modifier
+                modifier = modifier
                     .background(color = MaterialTheme.colorScheme.surfaceContainer)
                     .statusBarsPadding(),
                 actions = {
-                    if (currentRoute != FlickrSearchRoute.History) return@TopAppBar
+                    if (currentRoute != MainScreenRoute.History) return@TopAppBar
 
                     IconButton(
                         onClick = { showClearHistoryDialog = true },
@@ -98,10 +98,10 @@ fun MainScreen(
         },
         containerColor = MaterialTheme.colorScheme.surface,
     ) { innerPadding ->
-        Box(modifier = modifier.padding(innerPadding)) {
+        Box(modifier = Modifier.padding(innerPadding)) {
             when (currentRoute) {
-                FlickrSearchRoute.Search -> SearchScreen(navController)
-                FlickrSearchRoute.History -> HistoryScreen(navController)
+                MainScreenRoute.Search -> SearchScreen(navController)
+                MainScreenRoute.History -> HistoryScreen(navController)
             }
         }
     }
