@@ -31,11 +31,13 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
 fun SearchScreen(
     navController: NavController,
     modifier: Modifier = Modifier,
+    vm: SearchViewModel = koinViewModel(),
 ) {
     var searchQuery by remember { mutableStateOf("") }
     val focusManager = LocalFocusManager.current
@@ -68,7 +70,7 @@ fun SearchScreen(
                     value = searchQuery,
                     onValueChange = { searchQuery = it },
                     onSearch = { query ->
-                        // TODO: Call 'doSearch' in the SearchViewModel (which doesn't exist yet...)
+                        vm.doSearch(query)
                         focusManager.clearFocus()
                     },
                     modifier = Modifier.padding(horizontal = 8.dp),
