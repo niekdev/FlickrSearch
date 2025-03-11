@@ -12,6 +12,8 @@ androidx-activity = "1.10.1"
 androidx-appcompat = "1.7.0"
 androidx-lifecycle = "2.8.7"
 
+compose-navigation = "2.8.0-alpha10" # Compose navigation for KMP is still in alpha... exciting!
+
 koin = "4.0.2"
 sqlDelight = "2.0.2"
 
@@ -19,6 +21,8 @@ sqlDelight = "2.0.2"
 androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "androidx-activity" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "androidx-appcompat" }
 androidx-lifecycle-viewmodel = { group = "androidx.lifecycle", name = "lifecycle-viewmodel", version.ref = "androidx-lifecycle" }
+
+navigation-compose = { group = "org.jetbrains.androidx.navigation", name = "navigation-compose", version.ref = "compose-navigation" }
 
 # Koin
 koin-core = { group = "io.insert-koin", name = "koin-core", version.ref = "koin" }

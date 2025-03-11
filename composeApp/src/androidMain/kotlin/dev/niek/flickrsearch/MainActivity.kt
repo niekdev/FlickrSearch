@@ -3,7 +3,7 @@ package dev.niek.flickrsearch
 import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
-import dev.niek.flickrsearch.presentation.main.MainScreen
+import dev.niek.flickrsearch.presentation.navigation.ComposeAppNavigation
 import org.koin.core.component.KoinComponent
 
 class MainActivity : AppCompatActivity(), KoinComponent {
@@ -12,7 +12,7 @@ class MainActivity : AppCompatActivity(), KoinComponent {
         super.onCreate(savedInstanceState)
 
         setContent {
-            MainScreen()
+            ComposeAppNavigation()
         }
     }
 }
