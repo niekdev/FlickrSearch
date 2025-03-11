@@ -25,6 +25,7 @@ import dev.niek.flickrsearch.presentation.navigation.FlickrSearchRoute
 import dev.niek.flickrsearch.presentation.navigation.bottomNavigationItems
 import dev.niek.flickrsearch.presentation.screens.history.HistoryScreen
 import dev.niek.flickrsearch.presentation.screens.search.SearchScreen
+import org.koin.compose.viewmodel.koinViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -32,6 +33,7 @@ fun MainScreen(
     navController: NavController,
     currentRoute: FlickrSearchRoute,
     modifier: Modifier = Modifier,
+    vm: MainViewModel = koinViewModel(),
 ) {
     val startDestinationRoute: String = remember {
         requireNotNull(navController.graph.findStartDestination().route)
@@ -50,7 +52,7 @@ fun MainScreen(
                     if (currentRoute != FlickrSearchRoute.History) return@TopAppBar
 
                     IconButton(
-                        onClick = { /* no-op */ },
+                        onClick = { vm.clearSearchHistory() },
                     ) {
                         Icon(
                             imageVector = Icons.Default.Delete,
