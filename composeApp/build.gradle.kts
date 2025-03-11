@@ -22,6 +22,17 @@ kotlin {
 
     androidTarget()
 
+    listOf(
+        iosX64(),
+        iosArm64(),
+        iosSimulatorArm64(),
+    ).forEach { iosTarget ->
+        iosTarget.binaries.framework {
+            baseName = "FlickrSearchKmp"
+            isStatic = true
+        }
+    }
+
     sourceSets {
         commonMain.dependencies {
             implementation(projects.presentation)
@@ -34,6 +45,10 @@ kotlin {
             implementation(libs.androidx.activity.compose)
             implementation(libs.androidx.appcompat)
             implementation(libs.koin.android)
+        }
+
+        iosMain.dependencies {
+            implementation(libs.sqlDelight.nativeDriver)
         }
     }
 }

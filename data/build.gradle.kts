@@ -11,6 +11,17 @@ kotlin {
 
     androidTarget()
 
+    listOf(
+        iosX64(),
+        iosArm64(),
+        iosSimulatorArm64(),
+    ).forEach { iosTarget ->
+        iosTarget.binaries.framework {
+            baseName = "FlickrSearchKmp"
+            isStatic = true
+        }
+    }
+
     sourceSets {
         commonMain.dependencies {
             implementation(projects.domain)
@@ -47,6 +58,11 @@ kotlin {
 
         androidUnitTest.dependencies {
             implementation(libs.sqlDelight.sqliteDriver)
+        }
+
+        iosMain.dependencies {
+            implementation(libs.sqlDelight.nativeDriver)
+            implementation(libs.ktorClientIos)
         }
     }
 }
