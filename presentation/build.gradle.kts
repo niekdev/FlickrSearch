@@ -24,6 +24,8 @@ kotlin {
             implementation(libs.androidx.lifecycle.viewmodel)
             implementation(libs.navigation.compose)
             implementation(libs.koin.compose.viewmodel)
+            implementation(libs.paging.common)
+            implementation(libs.paging.compose)
             implementation(libs.landscapist)
         }
     }

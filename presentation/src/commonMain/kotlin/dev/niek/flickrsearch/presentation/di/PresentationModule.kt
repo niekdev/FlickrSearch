@@ -11,5 +11,7 @@ val presentationModule = module {
     viewModel { MainViewModel(get()) }
     viewModel { HistoryViewModel(get()) }
     viewModel { SearchViewModel(get()) }
-    viewModel { ResultsViewModel(get()) }
+    viewModel { (searchTerm: String) ->
+        ResultsViewModel(get(), searchTerm)
+    }
 }

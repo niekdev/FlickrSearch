@@ -24,4 +24,10 @@ class SearchPhotos(
 
     @SerialName("text")
     val searchTerm: String,
+
+    @SerialName("page")
+    val page: Int = 1,
+
+    @SerialName("per_page")
+    val pageSize: Int = 100,
 )

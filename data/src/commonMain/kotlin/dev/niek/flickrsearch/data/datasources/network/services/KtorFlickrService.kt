@@ -12,10 +12,16 @@ class KtorFlickrService(
     private val flickrApiKey: String,
 ) : FlickrService {
 
-    override suspend fun searchPhotos(searchTerm: String): SearchPhotosResponse = handleErrors {
+    override suspend fun searchPhotos(
+        searchTerm: String,
+        page: Int,
+        pageSize: Int,
+    ): SearchPhotosResponse = handleErrors {
         val request = SearchPhotos(
             apiKey = flickrApiKey,
             searchTerm = searchTerm,
+            page = page,
+            pageSize = pageSize,
         )
         httpClient.get(request)
     }

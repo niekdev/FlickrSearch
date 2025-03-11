@@ -1,8 +1,10 @@
 package dev.niek.flickrsearch.domain.repositories
 
+import app.cash.paging.PagingData
 import dev.niek.flickrsearch.domain.models.FlickrImage
+import kotlinx.coroutines.flow.Flow
 
 interface FlickrRepository {
 
-    suspend fun searchPhotos(searchTerm: String): Result<List<FlickrImage>>
+    fun searchPhotos(searchTerm: String): Flow<PagingData<FlickrImage>>
 }

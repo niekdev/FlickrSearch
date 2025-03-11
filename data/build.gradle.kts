@@ -16,6 +16,7 @@ kotlin {
 
             implementation(libs.kotlinx.coroutines)
             implementation(libs.koin.core)
+            implementation(libs.paging.common)
             implementation(libs.napier)
 
             implementation(libs.sqlDelight.primitiveAdapters)
