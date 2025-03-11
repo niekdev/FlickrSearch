@@ -68,7 +68,7 @@ fun ResultsScreen(
 
             is ResultsUiState.HasPhotos -> HasFlickrPhotosContent(
                 imageUrls = state.imageUrls,
-                modifier = Modifier.padding(innerPadding),
+                contentPadding = innerPadding,
             )
 
             is ResultsUiState.NoPhotos -> NoFlickrPhotosFoundContent(

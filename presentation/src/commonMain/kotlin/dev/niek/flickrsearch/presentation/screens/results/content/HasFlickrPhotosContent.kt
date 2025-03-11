@@ -2,6 +2,7 @@ package dev.niek.flickrsearch.presentation.screens.results.content
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.lazy.LazyColumn
@@ -18,10 +19,12 @@ import com.skydoves.landscapist.coil3.CoilImage
 @Composable
 fun HasFlickrPhotosContent(
     imageUrls: List<String>,
+    contentPadding: PaddingValues,
     modifier: Modifier = Modifier,
 ) {
     LazyColumn(
         modifier = modifier,
+        contentPadding = contentPadding,
         verticalArrangement = Arrangement.spacedBy(8.dp),
     ) {
         items(imageUrls) { imageUrl ->
