@@ -1,5 +1,8 @@
 package dev.niek.flickrsearch.presentation.screens.results
 
-data class ResultsUiState(
-    val imageUrls: List<String> = emptyList(),
-)
+sealed class ResultsUiState {
+    data object Loading : ResultsUiState()
+    data class HasPhotos(val imageUrls: List<String>) : ResultsUiState()
+    data object NoPhotos : ResultsUiState()
+    data class Error(val message: String) : ResultsUiState()
+}

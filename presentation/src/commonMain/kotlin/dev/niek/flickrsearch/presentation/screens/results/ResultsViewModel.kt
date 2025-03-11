@@ -17,14 +17,30 @@ class ResultsViewModel(
     private val dispatcher: CoroutineDispatcher = Dispatchers.IO,
 ) : ViewModel() {
 
-    private val _state = MutableStateFlow(ResultsUiState())
+    private val _state = MutableStateFlow<ResultsUiState>(ResultsUiState.Loading)
     val state: StateFlow<ResultsUiState> = _state.asStateFlow()
 
     fun doSearch(searchQuery: String) {
         viewModelScope.launch(dispatcher) {
-            searchFlickrPhotosUseCase(searchQuery).onSuccess { result ->
-                _state.update { state -> state.copy(imageUrls = result.map { it.url }) }
-            }
+            searchFlickrPhotosUseCase(searchQuery).fold(
+                onSuccess = { result ->
+                    _state.update {
+                        val imageUrls = result.map { it.url }
+
+                        if (imageUrls.isNotEmpty()) {
+                            ResultsUiState.HasPhotos(imageUrls)
+                        } else {
+                            ResultsUiState.NoPhotos
+                        }
+                    }
+                },
+                onFailure = { e ->
+                    e.printStackTrace()
+                    _state.update {
+                        ResultsUiState.Error(e.message ?: "Unknown error")
+                    }
+                }
+            )
         }
     }
 }
