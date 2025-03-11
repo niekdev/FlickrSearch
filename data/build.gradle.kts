@@ -1,5 +1,6 @@
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
+    alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.android.library)
     alias(libs.plugins.sqlDelight)
 }
@@ -15,13 +16,22 @@ kotlin {
 
             implementation(libs.kotlinx.coroutines)
             implementation(libs.koin.core)
+            implementation(libs.napier)
+
             implementation(libs.sqlDelight.primitiveAdapters)
             implementation(libs.sqlDelight.coroutines)
+
+            implementation(libs.ktorCore)
+            implementation(libs.ktorClientContentNegotiation)
+            implementation(libs.ktorSerialization)
+            implementation(libs.ktorResources)
+            implementation(libs.ktorClientLogging)
         }
 
         androidMain.dependencies {
             implementation(libs.koin.android)
             implementation(libs.sqlDelight.androidDriver)
+            implementation(libs.ktorClientAndroid)
         }
     }
 }

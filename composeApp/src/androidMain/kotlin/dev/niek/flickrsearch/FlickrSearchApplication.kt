@@ -1,7 +1,9 @@
 package dev.niek.flickrsearch
 
 import android.app.Application
+import dev.niek.flickrsearch.composeapp.BuildConfig
 import dev.niek.flickrsearch.data.datasources.database.di.databaseModule
+import dev.niek.flickrsearch.data.datasources.network.di.networkModule
 import dev.niek.flickrsearch.data.di.dataModule
 import dev.niek.flickrsearch.domain.di.domainModule
 import dev.niek.flickrsearch.presentation.di.presentationModule
@@ -25,6 +27,7 @@ class FlickrSearchApplication : Application() {
             modules(
                 listOf(
                     databaseModule,
+                    networkModule(BuildConfig.ENABLE_REMOTE_LOGGING),
 
                     presentationModule,
                     domainModule,
