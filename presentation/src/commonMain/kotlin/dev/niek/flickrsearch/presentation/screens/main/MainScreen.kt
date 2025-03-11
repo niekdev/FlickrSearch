@@ -24,7 +24,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import dev.niek.flickrsearch.presentation.navigation.AppRoute.MainScreenRoute
@@ -41,13 +40,12 @@ fun MainScreen(
     modifier: Modifier = Modifier,
     vm: MainViewModel = koinViewModel(),
 ) {
-    val state by vm.state.collectAsStateWithLifecycle()
-
     val startDestinationRoute: String = remember {
         requireNotNull(navController.graph.findStartDestination().route)
     }
 
     var showClearHistoryDialog by remember { mutableStateOf(false) }
+    var hasSearchHistory by remember { mutableStateOf(false) }
 
     Scaffold(
         topBar = {
@@ -63,7 +61,7 @@ fun MainScreen(
 
                     IconButton(
                         onClick = { showClearHistoryDialog = true },
-                        enabled = state.hasSearchHistory,
+                        enabled = hasSearchHistory,
                     ) {
                         Icon(
                             imageVector = Icons.Default.Delete,
@@ -101,7 +99,12 @@ fun MainScreen(
         Box(modifier = Modifier.padding(innerPadding)) {
             when (currentRoute) {
                 MainScreenRoute.Search -> SearchScreen(navController)
-                MainScreenRoute.History -> HistoryScreen(navController)
+                MainScreenRoute.History -> {
+                    HistoryScreen(
+                        navController = navController,
+                        hasHistory = { hasSearchHistory = it },
+                    )
+                }
             }
         }
     }

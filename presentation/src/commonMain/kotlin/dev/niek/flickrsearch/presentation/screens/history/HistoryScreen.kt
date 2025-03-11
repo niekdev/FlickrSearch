@@ -1,6 +1,7 @@
 package dev.niek.flickrsearch.presentation.screens.history
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -14,10 +15,15 @@ import org.koin.compose.viewmodel.koinViewModel
 @Composable
 fun HistoryScreen(
     navController: NavController,
+    hasHistory: (Boolean) -> Unit,
     modifier: Modifier = Modifier,
     vm: HistoryViewModel = koinViewModel(),
 ) {
     val uiState by vm.state.collectAsStateWithLifecycle()
+
+    LaunchedEffect(uiState.hasHistory) {
+        hasHistory(uiState.hasHistory)
+    }
 
     when (val state = uiState) {
         is HistoryUiState.Loading -> {

@@ -1,7 +1,7 @@
 package dev.niek.flickrsearch.presentation.screens.history
 
-sealed class HistoryUiState {
-    data object Loading : HistoryUiState()
-    data class HasHistory(val searchHistory: List<String>) : HistoryUiState()
-    data object NoHistory : HistoryUiState()
+sealed class HistoryUiState(val hasHistory: Boolean) {
+    data object Loading : HistoryUiState(false)
+    data class HasHistory(val searchHistory: List<String>) : HistoryUiState(true)
+    data object NoHistory : HistoryUiState(false)
 }
