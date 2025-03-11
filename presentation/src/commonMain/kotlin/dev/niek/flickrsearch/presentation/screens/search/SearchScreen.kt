@@ -30,13 +30,11 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavController
-import dev.niek.flickrsearch.presentation.navigation.AppRoute
 import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
 fun SearchScreen(
-    navController: NavController,
+    onClickSearchEntry: (searchTerm: String) -> Unit,
     modifier: Modifier = Modifier,
     vm: SearchViewModel = koinViewModel(),
 ) {
@@ -71,7 +69,7 @@ fun SearchScreen(
                     onValueChange = { searchQuery = it },
                     onSearch = { query ->
                         vm.doSearch(query)
-                        navController.navigate(AppRoute.Results(searchTerm = query))
+                        onClickSearchEntry(query)
                         focusManager.clearFocus()
                     },
                     modifier = Modifier.padding(horizontal = 8.dp),

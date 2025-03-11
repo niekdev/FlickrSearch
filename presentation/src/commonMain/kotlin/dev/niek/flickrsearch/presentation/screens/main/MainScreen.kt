@@ -26,6 +26,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
 import androidx.navigation.NavGraph.Companion.findStartDestination
+import dev.niek.flickrsearch.presentation.navigation.AppRoute
 import dev.niek.flickrsearch.presentation.navigation.AppRoute.MainScreenRoute
 import dev.niek.flickrsearch.presentation.navigation.bottomNavigationItems
 import dev.niek.flickrsearch.presentation.screens.history.HistoryScreen
@@ -40,6 +41,10 @@ fun MainScreen(
     modifier: Modifier = Modifier,
     vm: MainViewModel = koinViewModel(),
 ) {
+    fun navigateToSearchResults(searchTerm: String) {
+        navController.navigate(AppRoute.Results(searchTerm))
+    }
+
     val startDestinationRoute: String = remember {
         requireNotNull(navController.graph.findStartDestination().route)
     }
@@ -98,13 +103,14 @@ fun MainScreen(
     ) { innerPadding ->
         Box(modifier = Modifier.padding(innerPadding)) {
             when (currentRoute) {
-                MainScreenRoute.Search -> SearchScreen(navController)
-                MainScreenRoute.History -> {
-                    HistoryScreen(
-                        navController = navController,
-                        hasHistory = { hasSearchHistory = it },
-                    )
-                }
+                MainScreenRoute.Search -> SearchScreen(
+                    onClickSearchEntry = { navigateToSearchResults(it) },
+                )
+
+                MainScreenRoute.History -> HistoryScreen(
+                    onClickSearchEntry = { navigateToSearchResults(it) },
+                    hasHistory = { hasSearchHistory = it },
+                )
             }
         }
     }
