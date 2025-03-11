@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Delete
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -14,10 +15,14 @@ import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
@@ -42,6 +47,8 @@ fun MainScreen(
         requireNotNull(navController.graph.findStartDestination().route)
     }
 
+    var showClearHistoryDialog by remember { mutableStateOf(false) }
+
     Scaffold(
         topBar = {
             TopAppBar(
@@ -55,7 +62,7 @@ fun MainScreen(
                     if (currentRoute != FlickrSearchRoute.History) return@TopAppBar
 
                     IconButton(
-                        onClick = { vm.clearSearchHistory() },
+                        onClick = { showClearHistoryDialog = true },
                         enabled = state.hasSearchHistory,
                     ) {
                         Icon(
@@ -97,5 +104,30 @@ fun MainScreen(
                 FlickrSearchRoute.History -> HistoryScreen(navController)
             }
         }
+    }
+
+    if (showClearHistoryDialog) {
+        AlertDialog(
+            title = { Text("Clear Search History") },
+            text = { Text("Are you sure you want to delete all your search history? This action cannot be undone.") },
+            onDismissRequest = { showClearHistoryDialog = false },
+            confirmButton = {
+                TextButton(
+                    onClick = {
+                        vm.clearSearchHistory()
+                        showClearHistoryDialog = false
+                    }
+                ) {
+                    Text("Delete")
+                }
+            },
+            dismissButton = {
+                TextButton(
+                    onClick = { showClearHistoryDialog = false },
+                ) {
+                    Text("Cancel")
+                }
+            },
+        )
     }
 }
