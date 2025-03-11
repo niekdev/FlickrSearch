@@ -22,6 +22,7 @@ sqlDelight = "2.0.2"
 ktor = "3.1.1"
 napier = "2.7.1"
 buildKonfig = "0.17.0"
+landscapist = "2.4.7"
 
 [libraries]
 androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "androidx-activity" }
@@ -55,6 +56,7 @@ ktorClientLogging = { module = "io.ktor:ktor-client-logging", version.ref = "kto
 # Other
 napier = { group = "io.github.aakira", name = "napier", version.ref = "napier" }
 buildKonfig = { group = "com.codingfeline.buildkonfig", name = "buildkonfig-gradle-plugin", version.ref = "buildKonfig" }
+landscapist = { group = "com.github.skydoves", name = "landscapist-coil3", version.ref = "landscapist" }
 
 [plugins]
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
