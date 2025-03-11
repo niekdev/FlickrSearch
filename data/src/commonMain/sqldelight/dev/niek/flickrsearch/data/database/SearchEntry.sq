@@ -1,0 +1,14 @@
+import kotlin.Int;
+
+CREATE TABLE IF NOT EXISTS search_entry (
+  id INTEGER AS Int NOT NULL PRIMARY KEY,
+  query TEXT NOT NULL
+);
+
+selectSearchEntryById:
+SELECT *
+FROM search_entry
+WHERE id = :id;
+
+INSERT INTO search_entry(id, query)
+VALUES (0, 'Monkey');

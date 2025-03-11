@@ -21,10 +21,10 @@ fun MainScreen(
         modifier = modifier.fillMaxSize(),
         contentAlignment = Alignment.Center,
     ) {
-        state.greeting?.run {
+        state.searchEntry?.run {
             Text(this)
         } ?: run {
-            Text("No greeting has been found")
+            Text("No search entry has been found")
         }
     }
 }

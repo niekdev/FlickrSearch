@@ -2,7 +2,7 @@ package dev.niek.flickrsearch.presentation.main
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import dev.niek.flickrsearch.domain.usecases.GetGreetingUseCase
+import dev.niek.flickrsearch.domain.usecases.GetSearchEntryUseCase
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -12,7 +12,7 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
 class MainViewModel(
-    getGreetingUseCase: GetGreetingUseCase,
+    getSearchEntryUseCase: GetSearchEntryUseCase,
     dispatcher: CoroutineDispatcher = Dispatchers.IO,
 ) : ViewModel() {
 
@@ -22,9 +22,9 @@ class MainViewModel(
     init {
         viewModelScope.launch(dispatcher) {
             _state.update {
-                getGreetingUseCase().fold(
+                getSearchEntryUseCase().fold(
                     onSuccess = {
-                        MainUiState(it.message)
+                        MainUiState(it.query)
                     },
                     onFailure = {
                         MainUiState()

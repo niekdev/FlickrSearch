@@ -10,7 +10,7 @@ fun createDatabase(
     driver: SqlDriver,
 ): FlickrSearchDatabase = FlickrSearchDatabase(
     driver = driver,
-    greetingAdapter = Greeting.Adapter(
+    search_entryAdapter = Search_entry.Adapter(
         idAdapter = IntColumnAdapter,
     ),
 )

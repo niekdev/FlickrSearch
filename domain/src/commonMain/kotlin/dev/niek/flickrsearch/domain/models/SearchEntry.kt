@@ -1,5 +1,5 @@
 package dev.niek.flickrsearch.domain.models
 
-data class Greeting(
-    val message: String,
+data class SearchEntry(
+    val query: String,
 )
