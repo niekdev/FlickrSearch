@@ -9,7 +9,7 @@ class DefaultSearchHistoryRepository(
     private val searchHistoryDao: SearchHistoryDao,
 ) : SearchHistoryRepository {
 
-    override suspend fun getSearchHistory(): Flow<List<SearchEntry>> {
+    override fun getSearchHistory(): Flow<List<SearchEntry>> {
         return searchHistoryDao.selectFullSearchHistory()
     }
 

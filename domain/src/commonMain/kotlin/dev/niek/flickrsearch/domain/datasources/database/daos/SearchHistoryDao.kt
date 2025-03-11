@@ -5,7 +5,7 @@ import kotlinx.coroutines.flow.Flow
 
 interface SearchHistoryDao {
 
-    suspend fun selectFullSearchHistory(): Flow<List<SearchEntry>>
+    fun selectFullSearchHistory(): Flow<List<SearchEntry>>
 
     suspend fun insertSearchEntry(searchQuery: String)
 

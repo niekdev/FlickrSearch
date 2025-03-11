@@ -6,6 +6,6 @@ import kotlinx.coroutines.flow.Flow
 
 class GetSearchHistoryUseCase(private val searchHistoryRepo: SearchHistoryRepository) {
 
-    suspend operator fun invoke(): Flow<List<SearchEntry>> =
+    operator fun invoke(): Flow<List<SearchEntry>> =
         searchHistoryRepo.getSearchHistory()
 }

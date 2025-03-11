@@ -21,7 +21,7 @@ class SqlDelightSearchHistoryDao(
 
     private val queries get() = database.searchEntryQueries
 
-    override suspend fun selectFullSearchHistory(): Flow<List<SearchEntry>> =
+    override fun selectFullSearchHistory(): Flow<List<SearchEntry>> =
         queries.selectFullSearchHistory()
             .asFlow()
             .mapToList(dispatcher)
