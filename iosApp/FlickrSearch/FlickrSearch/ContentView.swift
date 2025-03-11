@@ -6,16 +6,22 @@
 //
 
 import SwiftUI
+import FlickrSearchKmp
+
+struct ComposeView: UIViewControllerRepresentable {
+
+    func makeUIViewController(context: Context) -> some UIViewController {
+        return KmpViewControllerKt.create()
+    }
+
+    func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
+        // no-op
+    }
+}
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
-        }
-        .padding()
+        ComposeView()
     }
 }
 

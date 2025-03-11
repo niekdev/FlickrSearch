@@ -6,9 +6,15 @@
 //
 
 import SwiftUI
+import FlickrSearchKmp
 
 @main
 struct FlickrSearchApp: App {
+    init() {
+        // Initialize Koin and Napier
+        KoinHelperKt.initializeHelpers()
+    }
+
     var body: some Scene {
         WindowGroup {
             ContentView()
