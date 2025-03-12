@@ -5,9 +5,11 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
@@ -15,6 +17,9 @@ import androidx.compose.foundation.lazy.LazyItemScope
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.BrokenImage
+import androidx.compose.material.icons.outlined.Error
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CircularProgressIndicator
@@ -27,6 +32,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import app.cash.paging.LoadStateError
@@ -61,34 +67,90 @@ fun FlickrPhotosContent(
         }
     }
 
-    LazyColumn(
-        modifier = modifier.fillMaxSize(),
-        contentPadding = contentPadding,
-        verticalArrangement = Arrangement.spacedBy(8.dp),
-    ) {
-        items(
-            count = pagingItems.itemCount,
-            key = pagingItems.itemKey { item -> item.url },
-        ) { index ->
-            pagingItems[index]?.run {
-                PhotoCard(url = url, title = title)
-            } ?: run {
-                loadingIndicator()
-            }
-        }
-
-        when {
-            pagingItems.loadState.refresh is LoadStateLoading -> {
-                item { loadingIndicator() }
+    Box(modifier = modifier.fillMaxSize()) {
+        when (pagingItems.loadState.refresh) {
+            is LoadStateLoading -> {
+                CircularProgressIndicator(
+                    modifier = Modifier.align(Alignment.Center),
+                    color = MaterialTheme.colorScheme.primary,
+                    strokeWidth = 4.dp,
+                )
             }
 
-            pagingItems.loadState.append is LoadStateLoading -> {
-                item { loadingIndicator() }
-            }
-
-            pagingItems.loadState.refresh is LoadStateError -> {
+            is LoadStateError -> {
                 val error = pagingItems.loadState.refresh as LoadStateError
-                item { Text(text = error.error.message ?: "Error occurred") }
+                Column(
+                    modifier = Modifier
+                        .align(Alignment.Center)
+                        .padding(16.dp),
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                ) {
+                    Icon(
+                        imageVector = Icons.Outlined.Error,
+                        contentDescription = null,
+                        modifier = Modifier.size(48.dp),
+                        tint = MaterialTheme.colorScheme.error,
+                    )
+                    Spacer(modifier = Modifier.height(16.dp))
+                    Text(
+                        text = error.error.message ?: "An error occurred",
+                        style = MaterialTheme.typography.bodyLarge,
+                        color = MaterialTheme.colorScheme.onSurface,
+                        textAlign = TextAlign.Center,
+                    )
+                }
+            }
+
+            else -> {
+                LazyColumn(
+                    modifier = Modifier.fillMaxSize(),
+                    contentPadding = contentPadding,
+                    verticalArrangement = Arrangement.spacedBy(8.dp),
+                ) {
+                    items(
+                        count = pagingItems.itemCount,
+                        key = pagingItems.itemKey { item -> item.url },
+                    ) { index ->
+                        pagingItems[index]?.run {
+                            PhotoCard(url = url, title = title)
+                        } ?: run {
+                            loadingIndicator()
+                        }
+                    }
+
+                    if (pagingItems.loadState.append is LoadStateLoading) {
+                        item { loadingIndicator() }
+                    }
+
+                    if (pagingItems.loadState.append is LoadStateError) {
+                        val error = pagingItems.loadState.append as LoadStateError
+                        item {
+                            Column(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(16.dp),
+                                horizontalAlignment = Alignment.CenterHorizontally
+                            ) {
+                                Text(
+                                    text = error.error.message ?: "Failed to load more items",
+                                    style = MaterialTheme.typography.bodyMedium,
+                                    color = MaterialTheme.colorScheme.error,
+                                    textAlign = TextAlign.Center,
+                                )
+                                Spacer(modifier = Modifier.height(8.dp))
+                                Button(
+                                    onClick = { pagingItems.retry() },
+                                    colors = ButtonDefaults.buttonColors(
+                                        containerColor = MaterialTheme.colorScheme.errorContainer,
+                                        contentColor = MaterialTheme.colorScheme.onErrorContainer,
+                                    )
+                                ) {
+                                    Text("Retry")
+                                }
+                            }
+                        }
+                    }
+                }
             }
         }
     }
