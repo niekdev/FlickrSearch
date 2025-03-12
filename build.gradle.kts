@@ -9,3 +9,16 @@ plugins {
     alias(libs.plugins.buildKonfig) apply false
     alias(libs.plugins.mokkery) apply false
 }
+
+tasks.register("runTests") {
+    description = "Runs all tests for all modules"
+    group = "verification"
+
+    outputs.upToDateWhen { false }
+
+    dependsOn(subprojects.map { project ->
+        project.tasks.matching { task ->
+            task is Test && !task.name.contains("release", ignoreCase = true)
+        }
+    })
+}
