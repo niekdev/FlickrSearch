@@ -47,6 +47,7 @@ koin-compose-viewmodel = { group = "io.insert-koin", name = "koin-compose-viewmo
 
 # SQLDelight
 sqlDelight-androidDriver = { group = "app.cash.sqldelight", name = "android-driver", version.ref = "sqlDelight" }
+sqlDelight-sqliteDriver = { group = "app.cash.sqldelight", name = "sqlite-driver", version.ref = "sqlDelight" }
 sqlDelight-coroutines = { group = "app.cash.sqldelight", name = "coroutines-extensions", version.ref = "sqlDelight" }
 sqlDelight-primitiveAdapters = { group = "app.cash.sqldelight", name = "primitive-adapters", version.ref = "sqlDelight" }
 

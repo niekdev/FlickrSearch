@@ -44,6 +44,10 @@ kotlin {
             implementation(libs.sqlDelight.androidDriver)
             implementation(libs.ktorClientAndroid)
         }
+
+        androidUnitTest.dependencies {
+            implementation(libs.sqlDelight.sqliteDriver)
+        }
     }
 }
 
