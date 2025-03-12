@@ -24,8 +24,8 @@ class SearchFlickrPhotosUseCaseShould {
         val mockFlow = flowOf(
             PagingData.from(
                 listOf(
-                    FlickrImage("https://niek.dev/image1"),
-                    FlickrImage("https://niek.dev/image2"),
+                    FlickrImage("https://niek.dev/image1", "Niek's cool image"),
+                    FlickrImage("https://niek.dev/image2", "Another of Niek's images (also cool)"),
                 )
             )
         )

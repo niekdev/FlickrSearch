@@ -13,7 +13,7 @@ class SearchPhotosResponseToDomainListMapper : Function1<SearchPhotosResponse, L
             }
 
         return response.photos.photo.mapNotNull { photo ->
-            photo.buildUrl()?.run { FlickrImage(this) }
+            photo.buildUrl()?.run { FlickrImage(this, photo.title) }
         }
     }
 }

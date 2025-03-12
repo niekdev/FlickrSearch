@@ -69,8 +69,8 @@ class FlickrImagePagingSourceShould {
     private val pagingSource = FlickrImagePagingSource(flickrService, mapper, searchTerm)
 
     private val expectedImages = listOf(
-        FlickrImage("https://farm1.static.flickr.com/s1/111_secretniek.jpg"),
-        FlickrImage("https://farm2.static.flickr.com/s2/222_secretniek.jpg"),
+        FlickrImage("https://farm1.static.flickr.com/s1/111_secretniek.jpg", "Photo 1"),
+        FlickrImage("https://farm2.static.flickr.com/s2/222_secretniek.jpg", "Photo 2"),
     )
 
     @Test

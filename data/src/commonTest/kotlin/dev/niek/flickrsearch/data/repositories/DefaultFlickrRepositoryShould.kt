@@ -32,8 +32,8 @@ private class TestPagingSource<T : Any>(private val data: List<T>) : PagingSourc
 class DefaultFlickrRepositoryShould {
 
     private val mockImages = listOf(
-        FlickrImage("https://niek.dev/image1"),
-        FlickrImage("https://niek.dev/image2"),
+        FlickrImage("https://niek.dev/image1", "Niek's cool image"),
+        FlickrImage("https://niek.dev/image2", "Another of Niek's images (not very cool)"),
     )
 
     private val flickrService: FlickrService = mock<FlickrService>()
