@@ -86,4 +86,15 @@ android {
     testOptions {
         unitTests.isReturnDefaultValues = true
     }
+
+    buildTypes {
+        debug {
+            isMinifyEnabled = false
+            isDefault = true
+        }
+
+        release {
+            consumerProguardFiles("proguard-rules.pro")
+        }
+    }
 }

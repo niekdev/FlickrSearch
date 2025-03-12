@@ -46,4 +46,15 @@ android {
     defaultConfig {
         minSdk = libs.versions.android.minSdk.get().toInt()
     }
+
+    buildTypes {
+        debug {
+            isMinifyEnabled = false
+            isDefault = true
+        }
+
+        release {
+            consumerProguardFiles("proguard-rules.pro")
+        }
+    }
 }

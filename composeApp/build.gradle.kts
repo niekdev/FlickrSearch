@@ -66,6 +66,24 @@ android {
         targetSdk = libs.versions.android.targetSdk.get().toInt()
         minSdk = libs.versions.android.minSdk.get().toInt()
     }
+
+    buildTypes {
+        debug {
+            isDebuggable = true
+            isMinifyEnabled = false
+            isDefault = true
+        }
+
+        release {
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
+            )
+            signingConfig = signingConfigs.getByName("debug")
+            isDebuggable = false
+            isMinifyEnabled = true
+            isShrinkResources = true
+        }
+    }
 }
 
 buildkonfig {
