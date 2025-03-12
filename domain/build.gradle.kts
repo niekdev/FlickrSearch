@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.kotlin.multiplatform)
     alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.android.library)
+    alias(libs.plugins.mokkery)
 }
 
 kotlin {
@@ -15,6 +16,14 @@ kotlin {
             implementation(libs.kotlinx.serialization)
             implementation(libs.koin.core)
             implementation(libs.paging.common)
+        }
+
+        commonTest.dependencies {
+            implementation(libs.junit5)
+            implementation(libs.kotlin.test)
+            implementation(libs.kotlinx.coroutines.test)
+            implementation(libs.kotlin.test.annotations.common)
+            implementation(libs.turbine)
         }
     }
 }

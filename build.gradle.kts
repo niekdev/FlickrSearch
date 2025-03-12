@@ -7,4 +7,5 @@ plugins {
     alias(libs.plugins.android.library) apply false
     alias(libs.plugins.sqlDelight) apply false
     alias(libs.plugins.buildKonfig) apply false
+    alias(libs.plugins.mokkery) apply false
 }

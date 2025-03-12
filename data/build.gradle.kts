@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.android.library)
     alias(libs.plugins.sqlDelight)
+    alias(libs.plugins.mokkery)
 }
 
 kotlin {
@@ -27,6 +28,15 @@ kotlin {
             implementation(libs.ktorSerialization)
             implementation(libs.ktorResources)
             implementation(libs.ktorClientLogging)
+        }
+
+        commonTest.dependencies {
+            implementation(libs.junit5)
+            implementation(libs.kotlin.test)
+            implementation(libs.kotlinx.coroutines.test)
+            implementation(libs.kotlin.test.annotations.common)
+            implementation(libs.turbine)
+            implementation(libs.paging.test)
         }
 
         androidMain.dependencies {

@@ -25,6 +25,10 @@ buildKonfig = "0.17.0"
 landscapist = "2.4.7"
 paging = "3.3.0-alpha02-0.5.1"
 
+junit = "5.10.0"
+mokkery = "2.7.1"
+turbine = "1.2.0"
+
 [libraries]
 androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "androidx-activity" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "androidx-appcompat" }
@@ -63,6 +67,14 @@ napier = { group = "io.github.aakira", name = "napier", version.ref = "napier" }
 buildKonfig = { group = "com.codingfeline.buildkonfig", name = "buildkonfig-gradle-plugin", version.ref = "buildKonfig" }
 landscapist = { group = "com.github.skydoves", name = "landscapist-coil3", version.ref = "landscapist" }
 
+# Test
+junit5 = { group = "org.junit.jupiter", name = "junit-jupiter-api", version.ref = "junit" }
+kotlin-test = { group = "org.jetbrains.kotlin", name = "kotlin-test", version.ref = "kotlin" }
+kotlin-test-annotations-common = { group = "org.jetbrains.kotlin", name = "kotlin-test-annotations-common", version.ref = "kotlin" }
+kotlinx-coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "kotlinx-coroutines" }
+turbine = { group = "app.cash.turbine", name = "turbine", version.ref = "turbine" }
+paging-test = { group = "app.cash.paging", name = "paging-testing", version.ref = "paging" }
+
 [plugins]
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
@@ -72,3 +84,4 @@ android-application = { id = "com.android.application", version.ref = "agp" }
 android-library = { id = "com.android.library", version.ref = "agp" }
 sqlDelight = { id = "app.cash.sqldelight", version.ref = "sqlDelight" }
 buildKonfig = { id = "com.codingfeline.buildkonfig", version.ref = "buildKonfig" }
+mokkery = { id = "dev.mokkery", version.ref = "mokkery" }
