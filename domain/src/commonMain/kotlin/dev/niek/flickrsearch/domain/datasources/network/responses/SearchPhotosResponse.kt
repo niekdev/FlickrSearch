@@ -51,11 +51,11 @@ data class Photo(
     val title: String,
 
     @SerialName("ispublic")
-    val isPublic: Int,
+    val isPublic: Int = 0,
 
     @SerialName("isfriend")
-    val isFriend: Int,
+    val isFriend: Int = 0,
 
     @SerialName("isfamily")
-    val isFamily: Int,
+    val isFamily: Int = 0,
 )
