@@ -99,7 +99,7 @@ fun MainScreen(
                 }
             }
         },
-        containerColor = MaterialTheme.colorScheme.surface,
+        containerColor = MaterialTheme.colorScheme.background,
     ) { innerPadding ->
         Box(modifier = Modifier.padding(innerPadding)) {
             when (currentRoute) {
