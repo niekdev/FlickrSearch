@@ -24,8 +24,12 @@ SELECT EXISTS(SELECT 1 FROM search_entry LIMIT 1);
 
 INSERT INTO search_entry(query)
 VALUES
-  ('Monkey'),
-  ('Tiger'),
-  ('Leopard'),
-  ('Lion'),
-  ('Giraffe');
+  ('Landscape'),
+  ('Night'),
+  ('Beach'),
+  ('Decoration'),
+  ('Portrait'),
+  ('Sunset'),
+  ('Bird'),
+  ('Nature'),
+  ('Macro');
