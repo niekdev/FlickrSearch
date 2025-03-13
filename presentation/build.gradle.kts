@@ -1,9 +1,12 @@
+import org.jetbrains.compose.ExperimentalComposeLibrary
+
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
     alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.compose.plugin)
     alias(libs.plugins.android.library)
+    alias(libs.plugins.mokkery)
 }
 
 kotlin {
@@ -38,6 +41,12 @@ kotlin {
             implementation(libs.paging.common)
             implementation(libs.paging.compose)
             implementation(libs.landscapist)
+        }
+
+        commonTest.dependencies {
+            implementation(libs.kotlin.test)
+            @OptIn(ExperimentalComposeLibrary::class)
+            implementation(compose.uiTest)
         }
     }
 }
