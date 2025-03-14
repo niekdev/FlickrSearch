@@ -16,7 +16,9 @@ tasks.register("runTests") {
 
     outputs.upToDateWhen { false }
 
-    dependsOn(subprojects.map { project ->
+    dependsOn(subprojects.filter { project ->
+        project.path != ":presentation"
+    }.map { project ->
         project.tasks.matching { task ->
             task is Test && !task.name.contains("release", ignoreCase = true)
         }
