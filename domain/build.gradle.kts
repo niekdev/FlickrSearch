@@ -30,7 +30,7 @@ kotlin {
         }
 
         commonTest.dependencies {
-            implementation(libs.junit5)
+            implementation(libs.junit5.api)
             implementation(libs.kotlin.test)
             implementation(libs.kotlinx.coroutines.test)
             implementation(libs.kotlin.test.annotations.common)
