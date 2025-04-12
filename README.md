@@ -29,6 +29,7 @@ https://github.com/user-attachments/assets/1b8dd59b-5f1c-44bc-bd23-3abfab8edb2b
 
 ### Testing
 - **JUnit 5** - Testing framework
+- **Konsist** - Enforcing cohesive code and architectural structure
 - **Mokkery** - Mocking library for Kotlin Multiplatform
 - **Turbine** - Testing library for Kotlin Flow
 - **Compose UI Testing** - For UI component testing
